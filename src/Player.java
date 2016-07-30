@@ -1,8 +1,8 @@
 
 public class Player {
 	
-	int x, y;
-	String marker;
+	private int x, y;
+	private String marker;
 	
 	public Player() {
 		x = randomGridCoor();
@@ -17,5 +17,13 @@ public class Player {
 	public void move(int x, int y){
 		this.x = x;
 		this.y = y;
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
 	}
 }

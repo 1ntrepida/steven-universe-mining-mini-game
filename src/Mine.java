@@ -1,10 +1,12 @@
 
 public class Mine {
 	String[][] mine; 
+	Player user;
 	
 	
 	public Mine(){
 		mine = new String[16][16];
+		user = new Player();
 		populateMine();
 	}
 	
@@ -13,7 +15,6 @@ public class Mine {
 		Gem rose = new Gem("Rose Quartz");
 		Gem amythest = new Gem("Amythest");
 		Gem pearl = new Gem("Pearl");
-		System.out.println(garnet.getX()+ "  " +garnet.getX());
 		mine[garnet.getX()][garnet.getY()] = garnet.getIcon();
 		mine[pearl.getX()][pearl.getY()] = pearl.getIcon();
 		mine[rose.getX()][rose.getY()] = rose.getIcon();
@@ -21,7 +22,7 @@ public class Mine {
 	}
 
 	public String toString(){
-		String map = "|----------------|\n";
+		String map = "|--------------------------------|\n";
 		for (int i = 0 ; i < 16 ; i++) {
 			map += "|";
 			for (int j = 0 ; j <16 ; j++) {
@@ -29,11 +30,11 @@ public class Mine {
 				{
 					mine[i][j] = " ";
 				}
-				map += mine[i][j];
+				map += mine[i][j] + " ";
 			}
 			map += "|\n";
 		}
-		map += "|----------------|\n";
+		map += "|--------------------------------|\n";
 		return map;
 	}
 	
