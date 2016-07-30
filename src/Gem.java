@@ -28,6 +28,7 @@ public class Gem {
 	}
 	
 	private int randomGridCoor() {
-		return (int) Math.random() * 16;
+		int value  = (int) (Math.random() * 16);
+		return value;
 	}
 }
