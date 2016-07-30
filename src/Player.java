@@ -11,7 +11,7 @@ public class Player {
 	}
 	
 	private int randomGridCoor() {
-		return (int) Math.random() * 16;
+		return (int) (Math.random() * 16);
 	}
 	
 	public void move(int x, int y){
@@ -25,5 +25,9 @@ public class Player {
 	
 	public int getY(){
 		return y;
+	}
+	
+	public String getIcon(){
+		return marker;
 	}
 }
