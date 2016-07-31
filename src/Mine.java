@@ -24,6 +24,7 @@ public class Mine {
 		mine[user.getX()][user.getY()] = user.getIcon();
 		for (int i = 0; i < gems.size() ; i++) {
 			Gem crystal = gems.get(i);
+			System.out.println(crystal.getName() + " x:"+ crystal.getX() +" y:"  + crystal.getY());
 			mine[crystal.getX()][crystal.getY()] = crystal.getIcon();
 		}
 	}
@@ -36,7 +37,7 @@ public class Mine {
 		int minDistance = 16;
 		Gem closest = null;
 		for (int i = 0; i < gems.size() ; i++){
-			int distance = calculateDistanceFromGemToUser(gems.get(i), user);
+			int distance = calculateDistanceFromGemToUser(gems.get(i));
 			if (minDistance > distance){
 				minDistance = distance;
 				closest = gems.get(i);
@@ -51,8 +52,8 @@ public class Mine {
 	 * @param human
 	 * @return
 	 */
-	public int calculateDistanceFromGemToUser(Gem gem, Player human){
-		return (Math.abs(gem.getX()-human.getX()) + (Math.abs(gem.getY()-human.getY())));
+	public int calculateDistanceFromGemToUser(Gem gem){
+		return (Math.abs(gem.getX()-user.getX()) + (Math.abs(gem.getY()-user.getY())));
 	}
 	
 	/**
@@ -75,7 +76,7 @@ public class Mine {
 	}
 
 	public String toString(){
-		String map = "|--------------------------------|\n";
+		String map = "|-------------------------------|\n";
 		for (int i = 0 ; i < 16 ; i++) {
 			map += "|";
 			for (int j = 0 ; j <16 ; j++) {
@@ -83,11 +84,11 @@ public class Mine {
 				{
 					mine[i][j] = " ";
 				}
-				map += mine[i][j] + " ";
+				map += mine[i][j] + "|";
 			}
-			map += "|\n";
+			map += "\n";
 		}
-		map += "|--------------------------------|\n";
+		map += "|-------------------------------|\n";
 		return map;
 	}
 	
@@ -106,5 +107,6 @@ public class Mine {
 		System.out.println(play.toString());
 		Gem closest = play.closestToUserStart();
 		System.out.println(closest.getName() + " X:" + closest.getX() + " Y:" + closest.getY());
+		System.out.println(play.calculateDistanceFromGemToUser(closest));
 	}
 }
