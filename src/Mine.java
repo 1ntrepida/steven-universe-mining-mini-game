@@ -46,6 +46,19 @@ public class Mine {
 		return closest;
 	}
 	
+	public Gem furthestToUserStart() {
+		int maxDistance = 0;
+		Gem furthest = null;
+		for (int i = 0; i < gems.size() ; i++){
+			int distance = calculateDistanceFromGemToUser(gems.get(i));
+			if (maxDistance < distance){
+				maxDistance = distance;
+				furthest = gems.get(i);
+			}
+		}
+		return furthest;
+	}
+	
 	/**
 	 * moves needed to move in a coor plane from gem to human
 	 * @param gem
@@ -104,9 +117,12 @@ public class Mine {
 	
 	public static void main(String [] args) {
 		Mine play = new Mine();
-		System.out.println(play.toString());
+		System.out.println(play.toString()); 
 		Gem closest = play.closestToUserStart();
 		System.out.println(closest.getName() + " X:" + closest.getX() + " Y:" + closest.getY());
 		System.out.println(play.calculateDistanceFromGemToUser(closest));
+		Gem furthest = play.furthestToUserStart();
+		System.out.println(furthest.getName() + " X:"+ furthest.getX() + " Y:" + furthest.getY());
+		System.out.println(play.calculateDistanceFromGemToUser(furthest));
 	}
 }
