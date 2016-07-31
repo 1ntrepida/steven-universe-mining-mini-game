@@ -6,28 +6,72 @@ public class Mine {
 	
 	private String[][] mine; 
 	private Player user;
-	private ArrayList movesMade;
+	private ArrayList<Gem> gems;
 	
 	public Mine(){
 		mine = new String[16][16];
 		user = new Player();
+		gems = new ArrayList<Gem>();
 		populateMine();
 	}
 	
 	public void populateMine() {
-		Gem garnet = new Gem("Garnet");
-		Gem rose = new Gem("Rose Quartz");
-		Gem amythest = new Gem("Amythest");
-		Gem pearl = new Gem("Pearl");
+		gems.add(new Gem("Garnet"));
+		gems.add(new Gem("Rose Quartz"));
+		gems.add(new Gem("Amythest"));
+		gems.add(new Gem("Pearl"));
+		
 		mine[user.getX()][user.getY()] = user.getIcon();
-		mine[garnet.getX()][garnet.getY()] = garnet.getIcon();
-		mine[pearl.getX()][pearl.getY()] = pearl.getIcon();
-		mine[rose.getX()][rose.getY()] = rose.getIcon();
-		mine[amythest.getX()][amythest.getY()] = amythest.getIcon();
+		for (int i = 0; i < gems.size() ; i++) {
+			Gem crystal = gems.get(i);
+			mine[crystal.getX()][crystal.getY()] = crystal.getIcon();
+		}
 	}
 	
+	/**
+	 * Used to determine which node is closest to the player cursor
+	 * @return returns the gem, either Garnet, Amythest, or Pearl
+	 */
+	public Gem closestToUserStart() {
+		int minDistance = 16;
+		Gem closest = null;
+		for (int i = 0; i < gems.size() ; i++){
+			int distance = calculateDistanceFromGemToUser(gems.get(i), user);
+			if (minDistance > distance){
+				minDistance = distance;
+				closest = gems.get(i);
+			}
+		}
+		return closest;
+	}
+	
+	/**
+	 * moves needed to move in a coor plane from gem to human
+	 * @param gem
+	 * @param human
+	 * @return
+	 */
+	public int calculateDistanceFromGemToUser(Gem gem, Player human){
+		return (Math.abs(gem.getX()-human.getX()) + (Math.abs(gem.getY()-human.getY())));
+	}
+	
+	/**
+	 * moves needed to move in a coor plane from gem to gem
+	 * @param gem1
+	 * @param gem2
+	 * @return
+	 */
+	public int calculateDistanceFromGemToGem(Gem gem1, Gem gem2){
+		return (Math.abs(gem1.getX()-gem2.getX()) + (Math.abs(gem1.getY()-gem2.getY())));
+	}
+	
+	/**
+	 * figures out shortest path that touches each node.
+	 * @return
+	 */
 	public int dijksta(){
-		return null;
+		
+		return 0;
 	}
 
 	public String toString(){
@@ -60,5 +104,7 @@ public class Mine {
 	public static void main(String [] args) {
 		Mine play = new Mine();
 		System.out.println(play.toString());
+		Gem closest = play.closestToUserStart();
+		System.out.println(closest.getName() + " X:" + closest.getX() + " Y:" + closest.getY());
 	}
 }
