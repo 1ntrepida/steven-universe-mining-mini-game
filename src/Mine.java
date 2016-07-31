@@ -25,6 +25,10 @@ public class Mine {
 		mine[rose.getX()][rose.getY()] = rose.getIcon();
 		mine[amythest.getX()][amythest.getY()] = amythest.getIcon();
 	}
+	
+	public int dijksta(){
+		return null;
+	}
 
 	public String toString(){
 		String map = "|--------------------------------|\n";
