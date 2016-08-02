@@ -84,8 +84,8 @@ public class Mine {
 	 * @return
 	 */
 	public int dijksta(){
-		
-		return 0;
+		Gem closest = closestToUserStart();
+		Gem furthest = furthestToUserStart();
 	}
 
 	public String toString(){
