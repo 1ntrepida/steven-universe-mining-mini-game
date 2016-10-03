@@ -1,0 +1,4 @@
+INDEX VERSION 1.129+C:\Users\arckw\Desktop\Workstation\steven-universe-mining-mini-game\.metadata\.plugins\org.eclipse.jdt.core
+39665534.index
+3930511455.index
+3678980623.index
