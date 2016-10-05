@@ -42,16 +42,6 @@ public class Mine {
 	**/
 	
 	
-	/**
-	 * moves needed to move in a coor plane from gem to gem
-	 * @param gem1
-	 * @param gem2
-	 * @return
-	 */
-	private int calculateDistanceFromGemToGem(Gem gem1, Gem gem2){
-		return (Math.abs(gem1.getX()-gem2.getX()) + (Math.abs(gem1.getY()-gem2.getY())));
-	}
-	
 	public String toString(){
 		String map = "|-------------------------------|\n";
 		for (int i = 0 ; i < 16 ; i++) {
@@ -69,6 +59,9 @@ public class Mine {
 		return map;
 	}
 	
+	private void analyzeDistances(){
+		// take every combination of edges and analyze them here 
+	}
 	
 	public static void main(String [] args) {
 		Mine play = new Mine();
